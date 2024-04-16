@@ -9,6 +9,14 @@ $array_pass = random_pass($pass_length, $letters, $numbers, $symbols);
 
 $pass = implode('', $array_pass);
 
+if($pass !== ''){
+  session_start();
+
+  $_SESSION['pass'] = $pass;
+
+  header('Location: ./result.php');
+}
+
 ?>
 
 <?php include __DIR__ . '/partials/head.php' ?>
@@ -23,8 +31,6 @@ $pass = implode('', $array_pass);
     </div>
     <button class="btn btn-primary mt-4">Genera</button>
     </form>
-    <h1>La tua password é:</h1>
-    <h2 class="fw-bold"><?php echo $pass ?></h2>
   </div>
 </body>
 </html>
